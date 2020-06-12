@@ -29,7 +29,7 @@ namespace Online_Voting_System.Account
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbvoting"].ConnectionString);
 
                 con.Open();
-                string qry = "select * from registeruser where VoterId='" + VoterId.Text + "' and password='" + Password.Text + "'";
+                string qry = "select * from registeruser where VoterId='" + this.VoterId.Text + "' and password='" + this.Password.Text + "'";
                 SqlCommand cmd = new SqlCommand(qry, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 dr.Read();

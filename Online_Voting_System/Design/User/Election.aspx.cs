@@ -43,9 +43,9 @@ namespace Online_Voting_System.Design.User
                 if (dv1.Count == 0)
                 {
 
-                    string insert = "insert into UserVoted values('" + Label2.Text + "')";
-                    SqlCommand cmd4 = new SqlCommand(insert, con);
-                    cmd4.ExecuteNonQuery();
+                    string insert = "insert into UserVoted values('" + this.Label2.Text + "')";
+                    SqlCommand cmd = new SqlCommand(insert,con);
+                    cmd.ExecuteNonQuery();
 
 
                     SqlDataSource sds = new SqlDataSource();
@@ -58,10 +58,10 @@ namespace Online_Voting_System.Design.User
                     {
                         int vote = 0;
                         string command = "insert into vote values(@Name,'" + vote + "')";
-                        SqlCommand cmd = new SqlCommand(command, con);
-                        cmd.Parameters.AddWithValue("@Name", RadioButtonList1.SelectedValue);
+                        SqlCommand cmd1 = new SqlCommand(command, con);
+                        cmd1.Parameters.AddWithValue("@Name", RadioButtonList1.SelectedValue);
 
-                        cmd.ExecuteNonQuery();
+                        cmd1.ExecuteNonQuery();
                         string command3 = "update vote set vote=vote+1 where Name=@Name";
                         SqlCommand cmd3 = new SqlCommand(command3, con);
                         cmd3.Parameters.AddWithValue("@Name", RadioButtonList1.SelectedValue);
@@ -95,7 +95,9 @@ namespace Online_Voting_System.Design.User
 
             catch (Exception ex)
             {
-                Label3.Text = "Please enter you Voter ID or select candidates !";
+
+                Label3.Text = ex.Message;
+                //"Please enter you Voter ID or select candidates !";
             }
 
 
