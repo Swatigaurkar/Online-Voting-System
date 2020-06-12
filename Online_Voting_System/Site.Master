@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Online_Voting_System.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> </title>
+    <%--  --%>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+
+    <style type="text/css">
+        .auto-style1 {
+            color: #FFFFFF;
+            font-size: medium;
+            
+        }
+   
+    </style>
+
+</head>
+<body>
+    <form runat="server">
+       
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                
+                    <asp:Image ID="Image1" runat="server" Height="58px" ImageUrl="~/Image/voteLogo.png" Width="90px" />
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="auto-style3"><a runat="server" href="~/Design/Home.aspx" class="auto-style1"><strong>Home</strong></a></li>                      
+                        <li class="auto-style3"><a runat="server" href="~/Design/Admin/AdminLogin.aspx" class="auto-style1">Admin</a></li>
+                        <li class="auto-style3"><a runat="server" href="~/Design/User/Election.aspx" class="auto-style1">Election</a></li>
+
+                    </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="auto-style3"><a runat="server" href="~/Design/User/Register" class="auto-style1">Voter Register</a></li>
+                                <li class="auto-style3"><a runat="server" href="~/Design/User/Login" class="auto-style1">Voter Login</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - My ASP.Net Application</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
